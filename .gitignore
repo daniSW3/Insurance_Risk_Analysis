@@ -3,7 +3,8 @@ __pycache__
 *.pyc
 venv/
 evenv/
-data/
+data/MachineLearningRating_v3.csv
+notebooks/data/insurance_data.csv
 *.log
 
 # Jupyter Notebooks
