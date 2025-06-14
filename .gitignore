@@ -11,3 +11,4 @@ evenv/
 # Data (optional if not tracking with LFS)
 data/*.csv
 notebooks/data/*.csv
+notebooks/data/insurance_data.csv
