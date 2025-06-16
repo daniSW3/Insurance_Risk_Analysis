@@ -1,34 +1,31 @@
-name: CI Pipeline
+name: Run tests
 
 on:
-  push:
-    branches:
-      - main
-      - task-1
   pull_request:
-    branches:
-      - main
+  push:
 
 jobs:
-  lint-and-test:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.9'
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install flake8 pytest pandas numpy
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
-    - name: Lint with flake8
-      run: |
-        flake8 . --max-line-length=88 --extend-ignore=E203
+      - name: Run pytest tests
+        run: |
+          # List the contents of the current directory to debug
+          ls -R
 
-    - name: Run tests
-      run: |
-        pytest tests/
+          # Run pytest
+          pytest tests/
