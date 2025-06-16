@@ -22,10 +22,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: List the contents of the current directory to debug
+        run: ls -R
+
       - name: Run pytest tests
         run: |
-          # List the contents of the current directory to debug
-          ls -R
-
-          # Run pytest
           pytest tests/
